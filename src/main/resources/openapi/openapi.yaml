@@ -1,0 +1,77 @@
+openapi: 3.0.2
+info:
+  title: API for Louwema
+  description: API for Louwema application
+  version: 0.0.1
+servers:
+  - url: "/"
+paths:
+  /user/getAllUser:
+    get:
+      tags:
+        - User
+      summary: Return a list of user
+      operationId: getAllUser
+      responses:
+        '200':
+          description: A JSON array of user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserDTO"
+  /user/getOneUser/{id_user}:
+    get:
+      tags:
+        - User
+      summary: Return one User
+      description: Return one User
+      operationId: getOneUser
+      parameters:
+        - name: id_user
+          in: path
+          description: User id_user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A JSON object
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/UserDTO"
+  /user/editUser:
+    put:
+      tags:
+        - User
+      summary: edit user
+      operationId: editUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: "#/components/schemas/UserDTO"
+      responses:
+        '200':
+          description: Save OK
+
+components:
+  schemas:
+    UserDTO:
+      type: object
+      properties:
+        id_user:
+          type: integer
+          format: int64
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string

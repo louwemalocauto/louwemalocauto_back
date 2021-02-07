@@ -1,0 +1,6 @@
+{
+  "basePackage": "com.louwemagroup.louwema",
+  "apiPackage": "com.louwemagroup.louwema.api",
+  "modelPackage": "com.louwemagroup.louwema.model"
+
+}
